@@ -17,7 +17,7 @@
       margin-bottom: 20px;
     }
     header img {
-      max-width: 200px;
+      max-width: 250px;
       height: auto;
     }
     h1, h2 {
@@ -82,7 +82,7 @@
 <body>
 
   <header>
-    <img src="YOUR_LOGO_URL_HERE" alt="Self-Rep Dads Logo" />
+    <img src="logo.png" alt="Self-Rep Dads Logo" />
   </header>
 
   <h1>Self-Rep Dads</h1>
@@ -93,11 +93,19 @@
     <div id="chatWindow"></div>
     <input type="text" id="userInput" placeholder="Type your message..." />
     <button class="button" onclick="sendToBot()">Send</button>
+    <div style="background:#dcd6f7; padding:10px; border-radius:5px; margin-top:10px;">
+      <strong>Examples of what you can ask MotionBot:</strong>
+      <ul style="padding-left:20px;">
+        <li>"I’m in the U.S., what form do I need for custody modification?"</li>
+        <li>"How do I write a motion for child support change in the U.K.?"</li>
+        <li>"What should I say at my court hearing?"</li>
+        <li>"Where can I find official forms for my state?"</li>
+      </ul>
+    </div>
   </div>
 
   <div class="section">
     <h2>Download Your Draft Document</h2>
-    <p>Get a structured draft you can copy into the official form.</p>
     <div id="draftText" style="white-space: pre-line;">
 [COURT NAME]
 [Address]
@@ -183,6 +191,7 @@ Respectfully submitted,
 
 </body>
 </html>
+
 
 
 
