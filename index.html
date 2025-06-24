@@ -5,51 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Self-Rep Dads</title>
   <style>
-    body { font-family: sans-serif; padding: 20px; }
-    #chatWindow { border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: auto; margin-bottom: 10px; }
-    .botReply { color: blue; margin: 5px 0; }
-    .userMessage { color: green; margin: 5px 0; }
+    body {
+      font-family: sans-serif;
+      background-color: #f0f4f8;
+      color: #333;
+      padding: 20px;
+      margin: 0;
+    }
+    h1 {
+      color: #0057b7;
+      border-bottom: 2px solid #0057b7;
+      padding-bottom: 5px;
+    }
+    p {
+      font-size: 1.2em;
+    }
+    #chatWindow {
+      border: 1px solid #ccc;
+      padding: 10px;
+      height: 300px;
+      overflow-y: auto;
+      background-color: #fff;
+    }
+    .botReply { color: #0057b7; margin: 5px 0; }
+    .userMessage { color: #228B22; margin: 5px 0; }
   </style>
 </head>
 <body>
   <h1>Welcome to Self-Rep Dads</h1>
-  <p>Empowering fathers to represent themselves in court.</p>
+  <p>Empowering fathers to represent themselves in court with confidence and support.</p>
 
-  <div id="chatWindow"></div>
-  <input type="text" id="userInput" placeholder="Ask MotionBot a question..." style="width: 80%;">
-  <button onclick="sendToBot()">Send</button>
+  <!-- Chatbot UI here if you want to keep it -->
 
-  <script>
-    async function sendToBot() {
-      const userText = document.getElementById("userInput").value;
-      if (!userText) return;
-
-      const chatWindow = document.getElementById("chatWindow");
-      chatWindow.innerHTML += `<div class="userMessage"><strong>You:</strong> ${userText}</div>`;
-      document.getElementById("userInput").value = "";
-
-      // Send to OpenAI API (replace YOUR_OPENAI_API_KEY with your real key)
-      const response = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer YOUR_OPENAI_API_KEY"
-        },
-        body: JSON.stringify({
-          model: "gpt-4",
-          messages: [
-            { role: "system", content: "You are MotionBot. Help dads draft legal motions in a supportive, respectful tone." },
-            { role: "user", content: userText }
-          ]
-        })
-      });
-
-      const data = await response.json();
-      const botReply = data.choices[0].message.content;
-      chatWindow.innerHTML += `<div class="botReply"><strong>MotionBot:</strong> ${botReply}</div>`;
-      chatWindow.scrollTop = chatWindow.scrollHeight;
-    }
-  </script>
 </body>
 </html>
+
 
