@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Self-Rep Dads</title>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: Arial, sans-serif;
       background: #fef6f0;
       color: #3a2f27;
       margin: 0;
       padding: 20px;
     }
-    h1 {
-      text-align: center;
+    h1, h2 {
       color: #a35429;
+      text-align: center;
     }
     .section {
       background: #fff5e6;
@@ -26,27 +26,28 @@
     }
     .pricing {
       display: flex;
-      justify-content: space-around;
       flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 15px;
     }
     .plan {
       background: #ffebd6;
-      border-radius: 8px;
       padding: 15px;
+      border-radius: 8px;
       width: 28%;
       min-width: 250px;
-      margin: 10px;
       text-align: center;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
     }
     .plan h3 {
-      margin-top: 0;
       color: #a35429;
+      margin-top: 0;
     }
     .button {
       background: #a35429;
-      color: white;
-      border: none;
+      color: #fff;
       padding: 10px 20px;
+      border: none;
       border-radius: 5px;
       cursor: pointer;
     }
@@ -57,18 +58,23 @@
       height: 200px;
       overflow-y: auto;
       margin-bottom: 10px;
+      border-radius: 5px;
     }
     input[type="text"] {
-      width: 70%;
       padding: 8px;
+      width: 70%;
       margin-right: 5px;
+    }
+    a {
+      color: #a35429;
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
   <h1>Self-Rep Dads</h1>
-  <p style="text-align: center;">Empowering fathers in the U.S. and U.K. to represent themselves in court with confidence and support.</p>
+  <p style="text-align:center;">Support for U.S. and U.K. fathers navigating self-representation in court.</p>
 
   <div class="section">
     <h2>AI Legal Assistant</h2>
@@ -78,11 +84,10 @@
   </div>
 
   <div class="section">
-    <h2>Download a Draft Document</h2>
-    <p>Generate your draft motion and copy the content into the official form for your location.</p>
+    <h2>Download Your Draft Document</h2>
+    <p>Get a draft motion to copy into the official form for your location.</p>
     <div id="draftText">
-      <strong>Draft motion for Modification of Child Support</strong><br>
-      COMES NOW [Your Name], the movant, and hereby petitions this Court for a modification of the existing child support order...
+      <strong>Sample Draft:</strong> COMES NOW [Your Name], and respectfully petitions this Court for...
     </div>
     <br>
     <button class="button" onclick="downloadDraft()">Download Draft</button>
@@ -94,17 +99,17 @@
       <div class="plan">
         <h3>Basic</h3>
         <p>$29.99/month</p>
-        <p>AI Legal Assistant<br>Basic Document Preparation<br>Educational Resources<br>Email Support</p>
+        <p>AI Legal Assistant 🤖<br>Basic Document Prep 📝<br>Resources 📘<br>Email Support 📧</p>
       </div>
       <div class="plan">
         <h3>Standard</h3>
         <p>$49.99/month</p>
-        <p>Everything in Basic<br>Advanced Document Generation<br>Case Strategy Guidance<br>Court Preparation Tools</p>
+        <p>Everything in Basic<br>Advanced Docs 📄<br>Strategy 🎯<br>Court Tools 🏛️</p>
       </div>
       <div class="plan">
         <h3>Premium</h3>
         <p>$79.99/month</p>
-        <p>Everything in Standard<br>Custom Document Builder<br>1:1 Mentor Session<br>Full Resource Library</p>
+        <p>Everything in Standard<br>Custom Docs 📝<br>1:1 Mentor 🕊️<br>Library 📚</p>
       </div>
     </div>
   </div>
@@ -112,19 +117,19 @@
   <script>
     async function sendToBot() {
       const chat = document.getElementById("chatWindow");
-      const userInput = document.getElementById("userInput").value;
+      const userInput = document.getElementById("userInput").value.trim();
       if (!userInput) return;
+
       chat.innerHTML += `<div><strong>You:</strong> ${userInput}</div>`;
       document.getElementById("userInput").value = "";
 
-      // Simple mock logic for location
       let botReply = "";
       if (userInput.toLowerCase().includes("u.s.") || userInput.toLowerCase().includes("us")) {
-        botReply = "Great, you're in the U.S.! Here's a link to official forms: <a href='https://www.uscourts.gov/forms' target='_blank'>US Courts Forms</a>";
+        botReply = "You're in the U.S.! Here's where you can find official forms: <a href='https://www.uscourts.gov/forms' target='_blank'>US Courts Forms</a>";
       } else if (userInput.toLowerCase().includes("u.k.") || userInput.toLowerCase().includes("uk")) {
-        botReply = "Great, you're in the U.K.! Here's a link to official forms: <a href='https://www.gov.uk/government/collections/court-forms' target='_blank'>UK Court Forms</a>";
+        botReply = "You're in the U.K.! Here's where you can find official forms: <a href='https://www.gov.uk/government/collections/court-forms' target='_blank'>UK Court Forms</a>";
       } else {
-        botReply = "Please tell me whether you're representing yourself in the U.S. or U.K.";
+        botReply = "Please specify if you're in the U.S. or U.K. so I can assist you better.";
       }
 
       chat.innerHTML += `<div><strong>MotionBot:</strong> ${botReply}</div>`;
@@ -143,6 +148,7 @@
 
 </body>
 </html>
+
 
 
 
