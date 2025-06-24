@@ -7,17 +7,25 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #fef6f0;
-      color: #3a2f27;
+      background: #f5f7fa;
+      color: #2c2c54;
       margin: 0;
       padding: 20px;
     }
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    header img {
+      max-width: 200px;
+      height: auto;
+    }
     h1, h2 {
-      color: #a35429;
+      color: #3c40c6;
       text-align: center;
     }
     .section {
-      background: #fff5e6;
+      background: #e0e7ff;
       padding: 20px;
       margin: 20px auto;
       border-radius: 10px;
@@ -31,7 +39,7 @@
       gap: 15px;
     }
     .plan {
-      background: #ffebd6;
+      background: #dcd6f7;
       padding: 15px;
       border-radius: 8px;
       width: 28%;
@@ -40,11 +48,11 @@
       box-shadow: 0 0 5px rgba(0,0,0,0.1);
     }
     .plan h3 {
-      color: #a35429;
+      color: #5f27cd;
       margin-top: 0;
     }
     .button {
-      background: #a35429;
+      background: #5f27cd;
       color: #fff;
       padding: 10px 20px;
       border: none;
@@ -66,12 +74,16 @@
       margin-right: 5px;
     }
     a {
-      color: #a35429;
+      color: #3c40c6;
       text-decoration: underline;
     }
   </style>
 </head>
 <body>
+
+  <header>
+    <img src="YOUR_LOGO_URL_HERE" alt="Self-Rep Dads Logo" />
+  </header>
 
   <h1>Self-Rep Dads</h1>
   <p style="text-align:center;">Support for U.S. and U.K. fathers navigating self-representation in court.</p>
@@ -85,9 +97,29 @@
 
   <div class="section">
     <h2>Download Your Draft Document</h2>
-    <p>Get a draft motion to copy into the official form for your location.</p>
-    <div id="draftText">
-      <strong>Sample Draft:</strong> COMES NOW [Your Name], and respectfully petitions this Court for...
+    <p>Get a structured draft you can copy into the official form.</p>
+    <div id="draftText" style="white-space: pre-line;">
+[COURT NAME]
+[Address]
+[City, State ZIP]
+
+CASE NUMBER: [Enter case number]
+
+IN THE MATTER OF:
+[Your Full Name], Movant
+AND
+[Other Party's Full Name], Respondent
+
+MOTION TO MODIFY CHILD SUPPORT
+
+COMES NOW, [Your Full Name], and respectfully requests that this Court modify the existing child support order dated [Order Date], based on:
+
+1. Circumstances have changed since the original order.
+2. [Describe change, e.g. income, custody].
+
+Respectfully submitted,
+[Your Name]
+[Date]
     </div>
     <br>
     <button class="button" onclick="downloadDraft()">Download Draft</button>
@@ -99,17 +131,20 @@
       <div class="plan">
         <h3>Basic</h3>
         <p>$29.99/month</p>
-        <p>AI Legal Assistant 🤖<br>Basic Document Prep 📝<br>Resources 📘<br>Email Support 📧</p>
+        <p>AI Legal Assistant 🤖<br>Basic Doc Prep 📝<br>Resources 📘<br>Email Support 📧</p>
+        <button class="button" onclick="window.location.href='YOUR_STRIPE_BASIC_URL'">Subscribe</button>
       </div>
       <div class="plan">
         <h3>Standard</h3>
         <p>$49.99/month</p>
         <p>Everything in Basic<br>Advanced Docs 📄<br>Strategy 🎯<br>Court Tools 🏛️</p>
+        <button class="button" onclick="window.location.href='YOUR_STRIPE_STANDARD_URL'">Subscribe</button>
       </div>
       <div class="plan">
         <h3>Premium</h3>
         <p>$79.99/month</p>
         <p>Everything in Standard<br>Custom Docs 📝<br>1:1 Mentor 🕊️<br>Library 📚</p>
+        <button class="button" onclick="window.location.href='YOUR_STRIPE_PREMIUM_URL'">Subscribe</button>
       </div>
     </div>
   </div>
@@ -125,11 +160,11 @@
 
       let botReply = "";
       if (userInput.toLowerCase().includes("u.s.") || userInput.toLowerCase().includes("us")) {
-        botReply = "You're in the U.S.! Here's where you can find official forms: <a href='https://www.uscourts.gov/forms' target='_blank'>US Courts Forms</a>";
+        botReply = "You're in the U.S.! Official forms: <a href='https://www.uscourts.gov/forms' target='_blank'>US Courts Forms</a>";
       } else if (userInput.toLowerCase().includes("u.k.") || userInput.toLowerCase().includes("uk")) {
-        botReply = "You're in the U.K.! Here's where you can find official forms: <a href='https://www.gov.uk/government/collections/court-forms' target='_blank'>UK Court Forms</a>";
+        botReply = "You're in the U.K.! Official forms: <a href='https://www.gov.uk/government/collections/court-forms' target='_blank'>UK Court Forms</a>";
       } else {
-        botReply = "Please specify if you're in the U.S. or U.K. so I can assist you better.";
+        botReply = "Please specify U.S. or U.K. so I can guide you.";
       }
 
       chat.innerHTML += `<div><strong>MotionBot:</strong> ${botReply}</div>`;
@@ -148,6 +183,7 @@
 
 </body>
 </html>
+
 
 
 
