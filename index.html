@@ -67,7 +67,6 @@
       overflow-y: auto;
       margin-bottom: 10px;
       border-radius: 5px;
-      display: none;
     }
     input[type="text"], input[type="email"], input[type="password"] {
       padding: 8px;
@@ -79,10 +78,8 @@
       text-decoration: underline;
     }
   </style>
-
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"></script>
   <script>
     const firebaseConfig = {
       apiKey: "AIzaSyDX6EWwqAPtKhS1ekv_GxMd2dkWIv0xDek",
@@ -97,17 +94,24 @@
     const app = firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
-    function signIn() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      auth.signInWithEmailAndPassword(email, password)
-        .then(() => {
-          document.getElementById("authBox").style.display = "none";
-          document.getElementById("chatSection").style.display = "block";
-        })
-        .catch(err => alert("Login failed: " + err.message));
-    }
+    document.addEventListener("DOMContentLoaded", () => {
+      const loginBtn = document.getElementById("loginBtn");
+      if (loginBtn) {
+        loginBtn.addEventListener("click", () => {
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          auth.signInWithEmailAndPassword(email, password)
+            .then(() => {
+              document.getElementById("authBox").style.display = "none";
+              document.getElementById("chatSection").style.display = "block";
+            })
+            .catch(error => {
+              alert("Login failed: " + error.message);
+              console.error("Login error", error);
+            });
+        });
+      }
+    });
   </script>
 </head>
 <body>
@@ -124,7 +128,7 @@
     <h2>Login to Access MotionBot</h2>
     <input type="email" id="email" placeholder="Email" />
     <input type="password" id="password" placeholder="Password" />
-    <button class="button" onclick="signIn()">Login</button>
+    <button class="button" id="loginBtn">Login</button>
   </div>
 
   <!-- Chatbot Section -->
@@ -230,47 +234,10 @@ Respectfully submitted,
       link.click();
     }
   </script>
-<!-- Firebase SDKs -->
-<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"></script>
-
-<script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyDX6EWwqAPtKhS1ekv_GxMd2dkWIv0xDek",
-    authDomain: "self-rep-dads.firebaseapp.com",
-    projectId: "self-rep-dads",
-    storageBucket: "self-rep-dads.firebasestorage.app",
-    messagingSenderId: "185562374615",
-    appId: "1:185562374615:web:bf3378d68b96a74c392b92",
-    measurementId: "G-S8K94JV1RY"
-  };
-
-  const app = firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const loginBtn = document.getElementById("loginBtn");
-    if (loginBtn) {
-      loginBtn.addEventListener("click", () => {
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-
-        auth.signInWithEmailAndPassword(email, password)
-          .then(() => {
-            document.getElementById("mainContent").style.display = "block";
-            document.getElementById("loginBox").style.display = "none";
-          })
-          .catch((error) => {
-            alert("Login failed: " + error.message);
-            console.error("Login error", error);
-          });
-      });
-    }
-  });
-</script>
 
 </body>
 </html>
+
 
 
 
