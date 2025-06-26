@@ -230,6 +230,44 @@ Respectfully submitted,
       link.click();
     }
   </script>
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDX6EWwqAPtKhS1ekv_GxMd2dkWIv0xDek",
+    authDomain: "self-rep-dads.firebaseapp.com",
+    projectId: "self-rep-dads",
+    storageBucket: "self-rep-dads.firebasestorage.app",
+    messagingSenderId: "185562374615",
+    appId: "1:185562374615:web:bf3378d68b96a74c392b92",
+    measurementId: "G-S8K94JV1RY"
+  };
+
+  const app = firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const loginBtn = document.getElementById("loginBtn");
+    if (loginBtn) {
+      loginBtn.addEventListener("click", () => {
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        auth.signInWithEmailAndPassword(email, password)
+          .then(() => {
+            document.getElementById("mainContent").style.display = "block";
+            document.getElementById("loginBox").style.display = "none";
+          })
+          .catch((error) => {
+            alert("Login failed: " + error.message);
+            console.error("Login error", error);
+          });
+      });
+    }
+  });
+</script>
 
 </body>
 </html>
