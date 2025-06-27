@@ -93,20 +93,6 @@
       measurementId: "G-S8K94JV1RY"
     };
 
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-
-    <script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyDX6EWwqAPtKhS1ekv_GxMd2dkWIv0xDek",
-    authDomain: "self-rep-dads.firebaseapp.com",
-    projectId: "self-rep-dads",
-    storageBucket: "self-rep-dads.firebasestorage.app",
-    messagingSenderId: "185562374615",
-    appId: "1:185562374615:web:bf3378d68b96a74c392b92",
-    measurementId: "G-S8K94JV1RY"
-  };
-
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
 
@@ -238,18 +224,29 @@ Respectfully submitted,
       chat.scrollTop = chat.scrollHeight;
     }
 
-    function downloadDraft() {
-      const text = document.getElementById("draftText").innerText;
-      const blob = new Blob([text], { type: "text/plain" });
-      const link = document.createElement("a");
-      link.href = window.URL.createObjectURL(blob);
-      link.download = "SelfRepDraft.txt";
-      link.click();
-    }
-  </script>
+   <script>
+  function downloadDraft() {
+    const text = document.getElementById("draftText").innerText;
+    const blob = new Blob([text], { type: "text/plain" });
+    const link = document.createElement("a");
+    link.href = window.URL.createObjectURL(blob);
+    link.download = "SelfRepDraft.txt";
+    link.click();
+  }
 
+  document.addEventListener("DOMContentLoaded", () => {
+    const loginBtn = document.querySelector('button[onclick="signIn()"]');
+    if (loginBtn) {
+      loginBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        signIn();
+      });
+    }
+  });
+</script>
 </body>
 </html>
+
 
 
 
