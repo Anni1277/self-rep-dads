@@ -78,6 +78,8 @@
       text-decoration: underline;
     }
   </style>
+
+  <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"></script>
   <script>
@@ -91,7 +93,7 @@
       measurementId: "G-S8K94JV1RY"
     };
 
-    const app = firebase.initializeApp(firebaseConfig);
+    firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -100,6 +102,7 @@
         loginBtn.addEventListener("click", () => {
           const email = document.getElementById("email").value;
           const password = document.getElementById("password").value;
+
           auth.signInWithEmailAndPassword(email, password)
             .then(() => {
               document.getElementById("authBox").style.display = "none";
@@ -148,7 +151,7 @@
     </div>
   </div>
 
-  <!-- Draft Download Section -->
+  <!-- Draft Section -->
   <div class="section">
     <h2>Download Your Draft Document</h2>
     <div id="draftText" style="white-space: pre-line;">
@@ -227,7 +230,7 @@ Respectfully submitted,
 
     function downloadDraft() {
       const text = document.getElementById("draftText").innerText;
-      const blob = new Blob([text], {type: "text/plain"});
+      const blob = new Blob([text], { type: "text/plain" });
       const link = document.createElement("a");
       link.href = window.URL.createObjectURL(blob);
       link.download = "SelfRepDraft.txt";
@@ -237,6 +240,7 @@ Respectfully submitted,
 
 </body>
 </html>
+
 
 
 
